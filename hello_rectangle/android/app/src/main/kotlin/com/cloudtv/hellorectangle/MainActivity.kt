@@ -1,4 +1,4 @@
-package com.example.fluttersamples
+package com.cloudtv.hellorectangle
 
 import android.os.Bundle
 

@@ -1,5 +1,5 @@
-name: flutter_samples
-description: First flutter app
+name: hello_rectangle
+description: A new Flutter project.
 
 dependencies:
   flutter:
