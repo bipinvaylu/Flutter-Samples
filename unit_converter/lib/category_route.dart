@@ -1,10 +1,12 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:unit_converter/category_widget.dart';
 import 'package:unit_converter/unit.dart';
 
 final _backgroundColor = Colors.green[100];
 
-class CategoryRoute extends StatelessWidget {
+class CategoryRoute extends StatefulWidget {
 //  static const _categories =  <Category>[
 //    Category("Length", Colors.teal, Icons.cake),
 //    Category("Area", Colors.orange, Icons.ac_unit),
@@ -15,6 +17,14 @@ class CategoryRoute extends StatelessWidget {
 
   const CategoryRoute();
 
+
+  @override
+  _CategoryRouterState createState() => _CategoryRouterState();
+}
+
+class _CategoryRouterState extends State<CategoryRoute> {
+
+  final categories = <CategoryWidget>[];
   static const _categoryNames = <String>[
     "Length",
     "Area",
@@ -37,6 +47,20 @@ class CategoryRoute extends StatelessWidget {
     Colors.red
   ];
 
+
+  @override
+  void initState() {
+    super.initState();
+    for (var i = 0; i < _categoryNames.length; i++) {
+      categories.add(CategoryWidget(
+        name: _categoryNames[i],
+        color: _baseColors[i],
+        iconLocation: Icons.cake,
+        units: _retrieveUnitList(_categoryNames[i]),
+      ));
+    }
+  }
+
   Widget _buildCategoryWidgets(List<Widget> categories) {
     return ListView.builder(
       itemBuilder: (BuildContext context, int index) => categories[index],
@@ -56,17 +80,7 @@ class CategoryRoute extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final categories = <CategoryWidget>[];
-
-    for (var i = 0; i < _categoryNames.length; i++) {
-      categories.add(CategoryWidget(
-        name: _categoryNames[i],
-        color: _baseColors[i],
-        iconLocation: Icons.cake,
-        units: _retrieveUnitList(_categoryNames[i]),
-      ));
-    }
-
+    
     final listView = Container(
       color: Colors.green[200],
       padding: EdgeInsets.symmetric(horizontal: 8.0),
