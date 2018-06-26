@@ -80,7 +80,7 @@ class _CategoryRouterState extends State<CategoryRoute> {
 
   @override
   Widget build(BuildContext context) {
-    
+
     final listView = Container(
       color: Colors.green[200],
       padding: EdgeInsets.symmetric(horizontal: 8.0),
